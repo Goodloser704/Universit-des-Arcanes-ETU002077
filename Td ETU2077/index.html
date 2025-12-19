@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Université des Arcanes Élémentaires</title>
+   <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Structure sémantique : header pour l'entête du site -->
+    <header role="banner">
+        <h1>Université des Arcanes Élémentaires</h1>
+        <!-- nav pour la navigation principale -->
+        <nav aria-label="Navigation principale">
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#programme">Programme</a></li>
+                <li><a href="#inscription">Inscription</a></li>
+                <li><a href="#campus">Le Campus</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- main contient le contenu principal unique de la page -->
+    <main id="accueil">
+        
+        <!-- section regroupe un contenu thématique -->
+        <section class="grid-layout">
+            <!-- article pour un contenu autonome (ici la présentation) -->
+            <article>
+                <h2>Bienvenue futurs sorciers</h2>
+                <p>L'Université des Arcanes Élémentaires forme l'élite des mages depuis 1492. Située au cœur de la Forêt des Songes, notre établissement propose un cursus complet maîtrisant les quatre éléments.</p>
+                
+                <!-- Image avec attribut alt pertinent -->
+                <figure>
+                    <img src="assets/images/blason_universite.png" alt="Écusson de l'Université montrant un dragon, un phénix et un livre de sorts" width="200">
+                    <figcaption>Notre blason officiel.</figcaption>
+                    <!-- L'attribut alt est essentiel pour l'accessibilité (lecteurs d'écran) et s'affiche si l'image ne charge pas. -->
+                </figure>
+            </article>
+
+            <!-- aside pour du contenu indirectement lié (encart d'actualités) -->
+            <aside>
+                <h3>Actualités Magiques</h3>
+                <ul>
+                    <li>Tournoi de Lévitation : inscriptions ouvertes.</li>
+                    <li>Attention : Les Mandragores sont en période de mue.</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section id="programme">
+            <h2>Planning des Cours de Première Année</h2>
+            <!-- Table de données structurée -->
+            <!-- Utilisation de data-semester pour stocker des métadonnées personnalisées -->
+            <!-- Commentaire data-* : L'attribut data-semester pourrait être utilisé en JS pour filtrer l'affichage du planning par semestre sans recharger la page. -->
+            <div class="table-container">
+                <table data-semester="1">
+                    <caption>Emploi du temps - Semaine A</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Jour</th>
+                            <th scope="col">Matin (8h-12h)</th>
+                            <th scope="col">Après-midi (14h-17h)</th>
+                            <th scope="col">Professeur</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Lundi</th>
+                            <td>Alchimie Fondamentale</td>
+                            <td>Botanique Magique</td>
+                            <td>Pr. Flamel</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mardi</th>
+                            <td>Défense contre les Ombres</td>
+                            <td>Histoire de la Magie</td>
+                            <td>Mme Hécate</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Mercredi</th>
+                            <td>Sortilèges et Enchantements</td>
+                            <td>Vol sur Balai</td>
+                            <td>M. Merlin</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="campus">
+            <h2>Visite du Campus</h2>
+            <p>Découvrez le lieu de vos rêves  :</p>
+            
+            <!-- Contenu multimédia : Vidéo (ou Audio) -->
+            <!-- Fallback text si le média n'est pas supporté -->
+            <video controls width="400" poster="assets/images/poster_video.jpg">
+                <source src="assets/visite_campus.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la balise vidéo. Écoutez plutôt notre hymne :
+                <audio controls>
+                    <source src="assets/hymne.mp3" type="audio/mpeg">
+                    Votre navigateur ne supporte pas l'élément audio.
+                </audio>
+            </video>
+
+            <p>Localisation de l'université :</p>
+            <!-- Contenu intégré via iframe -->
+            <iframe 
+                src="https://www.openstreetmap.org/export/embed.html?bbox=-0.14,51.49,-0.12,51.51&amp;layer=mapnik" 
+                width="100%" 
+                height="300" 
+                title="Carte de localisation de l'Université (fictive)"
+                style="border:0;">
+            </iframe>
+        </section>
+
+        <section id="inscription">
+            <h2>Inscription au Concours d'Entrée</h2>
+            <!-- Formulaire avec validation HTML5 -->
+            <form action="/inscription" method="post">
+                <fieldset>
+                    <legend>Identité du Sorcier</legend>
+                    
+                    <label for="nom">Nom de famille :</label>
+                    <input type="text" id="nom" name="nom" required placeholder="Ex: Potter">
+
+                    <label for="prenom">Prénom :</label>
+                    <input type="text" id="prenom" name="prenom" required placeholder="Ex: Harry">
+
+                    <label for="email">Adresse Hibou-Mail :</label>
+                    <input type="email" id="email" name="email" required placeholder="nom@sorcier.edu">
+
+                    <label for="password">Mot de passe magique :</label>
+                    <input type="password" id="password" name="password" required minlength="8" placeholder="8 caractères min">
+
+                    <label for="naissance">Date de naissance :</label>
+                    <input type="date" id="naissance" name="naissance" required>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Détails de candidature</legend>
+                    
+                    <label for="code_baguette">Code de Baguette (3 lettres majuscules - 4 chiffres) :</label>
+                    <!-- Pattern regex pour le thème sorcier -->
+                    <input type="text" id="code_baguette" name="code_baguette" 
+                           pattern="[A-Z]{3}-[0-9]{4}" 
+                           placeholder="Ex: PHX-1992" 
+                           title="Le code doit comporter 3 lettres majuscules, un tiret et 4 chiffres (ex: PHX-1992)">
+                    
+                    <label for="specialite">Spécialité souhaitée :</label>
+                    <select id="specialite" name="specialite">
+                        <option value="feu">Pyromancie</option>
+                        <option value="eau">Hydromancie</option>
+                        <option value="air">Aéromancie</option>
+                        <option value="terre">Géomancie</option>
+                    </select>
+                </fieldset>
+
+                <button type="submit">Envoyer par Hibou</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- footer pour le pied de page -->
+    <footer>
+        <p>&copy; 2025 Université des Arcanes Élémentaires. Tous droits réservés.</p>
+        <p>Contact : <a href="mailto:contact@arcanes.edu">contact@arcanes.edu</a></p>
+    </footer>
+
+</body>
+</html>
