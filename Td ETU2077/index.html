@@ -16,6 +16,7 @@
             <ul>
                 <li><a href="#accueil">Accueil</a></li>
                 <li><a href="#programme">Programme</a></li>
+                <li><a href="#evenements">Événements</a></li>
                 <li><a href="#inscription">Inscription</a></li>
                 <li><a href="#campus">Le Campus</a></li>
             </ul>
@@ -115,6 +116,76 @@
                 style="border:0;">
             </iframe>
         </section>
+
+        <section id="evenements">
+            <h2>Événements à venir</h2>
+            <div class="events-container">
+                <article class="event">
+                    <h3>Grand Tournoi de Duel Magique</h3>
+                    <p class="date">📅 15 Novembre | 📍 Arène des Éléments</p>
+                    <p>Venez assister à l'affrontement des meilleurs duellistes de l'université. Qui remportera la Coupe de Feu cette année ?</p>
+                    <button class="btn-event-register" onclick="openEventModal('Grand Tournoi de Duel Magique')">S'inscrire à cet événement</button>
+                </article>
+                
+                <article class="event">
+                    <h3>Bal de la Lune Bleue</h3>
+                    <p class="date">📅 21 Décembre | 📍 Grande Salle de Cristal</p>
+                    <p>Une soirée féerique sous le signe de l'élégance et de la magie. Tenue de sorcier formelle exigée.</p>
+                    <button class="btn-event-register" onclick="openEventModal('Bal de la Lune Bleue')">S'inscrire à cet événement</button>
+                </article>
+
+                <article class="event">
+                    <h3>Conférence : L'Art des Potions Interdites</h3>
+                    <p class="date">📅 10 Janvier | 📍 Amphithéâtre Merlin</p>
+                    <p>Présentée par le célèbre Alchimiste Nicolas Flamel. Réservé aux étudiants de 3ème année et plus.</p>
+                    <button class="btn-event-register" onclick="openEventModal('Conférence : L\'Art des Potions Interdites')">S'inscrire à cet événement</button>
+                </article>
+
+                <article class="event">
+                    <h3>Championnat de Quidditch</h3>
+                    <p class="date">📅 2 Février | 📍 Stade Aérien</p>
+                    <p>Soutenez votre maison lors du match d'ouverture de la saison ! Apportez vos écharpes et vos bannières.</p>
+                    <button class="btn-event-register" onclick="openEventModal('Championnat de Quidditch')">S'inscrire à cet événement</button>
+                </article>
+            </div>
+        </section>
+
+        <!-- Modale d'inscription aux événements -->
+        <div id="eventModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeEventModal()">&times;</span>
+                <h2>Inscription à l'événement</h2>
+                <p id="eventTitleDisplay" class="highlight-event"></p>
+                <form onsubmit="event.preventDefault(); closeEventModal(); alert('Inscription magique envoyée !');">
+                    <label for="event_nom">Nom du Sorcier :</label>
+                    <input type="text" id="event_nom" required>
+                    
+                    <label for="event_email">Hibou-Mail :</label>
+                    <input type="email" id="event_email" required>
+                    
+                    <button type="submit">Valider l'inscription</button>
+                </form>
+            </div>
+        </div>
+
+        <script>
+            function openEventModal(eventName) {
+                document.getElementById('eventTitleDisplay').innerText = eventName;
+                document.getElementById('eventModal').style.display = "block";
+            }
+
+            function closeEventModal() {
+                document.getElementById('eventModal').style.display = "none";
+            }
+
+            // Fermer la modale si on clique en dehors
+            window.onclick = function(event) {
+                var modal = document.getElementById('eventModal');
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        </script>
 
         <section id="inscription">
             <h2>Inscription au Concours d'Entrée</h2>
